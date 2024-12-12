@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+  <title>Login and Register</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
   <div class="login-container">
-    <div class="login-box">
+    <!-- Login Form -->
+    <div id="loginBox" class="login-box">
       <form id="loginForm">
         <h1>Login</h1>
         <div class="input-group">
@@ -19,18 +21,28 @@
           <input type="password" id="password" placeholder="Password" required>
           <span class="icon">🔒</span>
         </div>
-        <div class="options">
-          <label>
-            <input type="checkbox" id="rememberMe"> Remember me
-          </label>
-          <a href="#">Forgot password?</a>
-        </div>
         <button type="button" onclick="login()">Login</button>
         <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
       </form>
     </div>
-  </div>
 
+    <!-- Register Form -->
+    <div id="registerBox" class="login-box hidden">
+      <form id="registerForm">
+        <h1>Register</h1>
+        <div class="input-group">
+          <input type="text" id="regUsername" placeholder="Username" required>
+          <span class="icon">👤</span>
+        </div>
+        <div class="input-group">
+          <input type="email" id="regEmail" placeholder="Email" required>
+          <span class="icon">📧</span>
+        </div>
+        <button type="button" onclick="register()">Register</button>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+      </form>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
