@@ -1,32 +1,9 @@
-// Konfigurasi bot Telegram
-const botToken = "7667658360:AAGwXaS2tfDV52denremA6FsWjg-QLi-bKM"; // Ganti dengan token bot Telegram Anda
-const chatId = "7013450923"; // Ganti dengan chat ID pengguna (atau gunakan mekanisme input untuk mendapatkan ID pengguna)
+// Inisialisasi EmailJS
+(function () {
+  emailjs.init("Zd41wL2oRWgQ1CgBw"); // Ganti dengan User ID dari EmailJS
+})();
 
-// Fungsi untuk menghasilkan password acak
-function generatePassword(length = 8) {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    password += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return password;
-}
-
-// Fungsi untuk mengirim pesan ke bot Telegram
-function sendToTelegram(message) {
-  const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        alert("Gagal mengirim pesan ke Telegram!");
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
-
-// Fungsi untuk login
+// Fungsi untuk Login
 function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -41,37 +18,70 @@ function login() {
   }
 }
 
-// Fungsi untuk register
+// Fungsi untuk Registrasi
 function register() {
   const regUsername = document.getElementById("regUsername").value;
+  const regEmail = document.getElementById("regEmail").value;
 
-  // Cek apakah username sudah terdaftar
-  if (localStorage.getItem(regUsername)) {
-    alert("Username sudah terdaftar! Gunakan username lain.");
-  } else {
-    // Generate password otomatis
-    const regPassword = generatePassword();
+  if (!regUsername || !regEmail) {
+    alert("Masukkan username dan email!");
+    return;
+  }
 
-    // Simpan username dan password di localStorage
+  // Generate password otomatis
+  const regPassword = generatePassword();
+
+  // Simpan data ke localStorage
+  if (!localStorage.getItem(regUsername)) {
     localStorage.setItem(regUsername, regPassword);
 
-    // Kirim password ke bot Telegram
-    const message = `Akun berhasil dibuat!\nUsername: ${regUsername}\nPassword: ${regPassword}`;
-    sendToTelegram(message);
-
-    alert("Registrasi berhasil! Password Anda telah dikirim ke Telegram.");
+    // Kirim email ke pengguna
+    sendEmail(regEmail, regUsername, regPassword);
+    alert("Akun berhasil dibuat! Password telah dikirim ke email Anda.");
     showLogin();
+  } else {
+    alert("Username sudah digunakan! Pilih username lain.");
   }
 }
 
-// Tampilkan form login
-function showLogin() {
-  document.getElementById("loginForm").classList.remove("hidden");
-  document.getElementById("registerForm").classList.add("hidden");
+// Fungsi untuk mengirim email
+function sendEmail(email, username, password) {
+  const templateParams = {
+    user_email: darelmyid@gmail.com, // Email pengguna
+    username: Darel, // Username pengguna
+    password: Dd@@1122, // Password
+  };
+
+  emailjs
+    .send("service_rozbrbg", "template_whzt2p8", templateParams)
+    .then(
+      function (response) {
+        console.log("Email berhasil dikirim!", response.status, response.text);
+      },
+      function (error) {
+        console.error("Gagal mengirim email!", error);
+      }
+    );
 }
 
-// Tampilkan form register
-function showRegister() {
-  document.getElementById("loginForm").classList.add("hidden");
-  document.getElementById("registerForm").classList.remove("hidden");
+// Fungsi untuk menghasilkan password acak
+function generatePassword(length = 8) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return password;
 }
+
+// Fungsi untuk menampilkan formulir Login
+function showLogin() {
+  document.getElementById("loginBox").classList.remove("hidden");
+  document.getElementById("registerBox").classList.add("hidden");
+}
+
+// Fungsi untuk menampilkan formulir Register
+function showRegister() {
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("registerBox").classList.remove("hidden");
+                      }
