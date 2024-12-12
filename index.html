@@ -8,31 +8,29 @@
 </head>
 <body>
   <div class="login-container">
-    <form id="loginForm" class="login-form">
-      <h1>Login</h1>
-      <div class="input-group">
-        <input type="text" id="username" placeholder="Username" required>
-        <span class="icon">👤</span>
-      </div>
-      <div class="input-group">
-        <input type="password" id="password" placeholder="Password" required>
-        <span class="icon">🔒</span>
-      </div>
-      <button type="button" onclick="login()">Login</button>
-      <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
-    </form>
-
-    <form id="registerForm" class="login-form hidden">
-      <h1>Register</h1>
-      <div class="input-group">
-        <input type="text" id="regUsername" placeholder="Username" required>
-        <span class="icon">👤</span>
-      </div>
-      <button type="button" onclick="register()">Register</button>
-      <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
-    </form>
+    <div class="login-box">
+      <form id="loginForm">
+        <h1>Login</h1>
+        <div class="input-group">
+          <input type="text" id="username" placeholder="Username" required>
+          <span class="icon">👤</span>
+        </div>
+        <div class="input-group">
+          <input type="password" id="password" placeholder="Password" required>
+          <span class="icon">🔒</span>
+        </div>
+        <div class="options">
+          <label>
+            <input type="checkbox" id="rememberMe"> Remember me
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button type="button" onclick="login()">Login</button>
+        <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+      </form>
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
-</html>
+                                                                                     </html>
