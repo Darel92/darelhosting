@@ -1,70 +1,70 @@
-// Inisialisasi EmailJS
-(function () {
-  emailjs.init("Zd41wL2oRWgQ1CgBw"); // Ganti dengan User ID dari EmailJS
-})();
+// Fungsi untuk menampilkan formulir Register
+function showRegister() {
+  document.getElementById("loginBox").classList.add("hidden");  // Sembunyikan login
+  document.getElementById("registerBox").classList.remove("hidden");  // Tampilkan register
+}
 
-// Fungsi untuk Login
+// Fungsi untuk menampilkan formulir Login
+function showLogin() {
+  document.getElementById("loginBox").classList.remove("hidden");  // Tampilkan login
+  document.getElementById("registerBox").classList.add("hidden");  // Sembunyikan register
+}
+
+// Fungsi untuk proses login
 function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
-  // Ambil data dari localStorage
+  // Validasi username dan password
   const storedPassword = localStorage.getItem(username);
 
   if (storedPassword && storedPassword === password) {
-    alert(`Login berhasil! Selamat datang, ${username}`);
+    alert("Login berhasil!");
   } else {
     alert("Username atau password salah!");
   }
 }
 
-// Fungsi untuk Registrasi
+// Fungsi untuk proses registrasi
 function register() {
   const regUsername = document.getElementById("regUsername").value;
   const regEmail = document.getElementById("regEmail").value;
 
   if (!regUsername || !regEmail) {
-    alert("Masukkan username dan email!");
+    alert("Username dan email harus diisi!");
     return;
   }
 
   // Generate password otomatis
-  const regPassword = generatePassword();
+  const password = generatePassword();
 
-  // Simpan data ke localStorage
-  if (!localStorage.getItem(regUsername)) {
-    localStorage.setItem(regUsername, regPassword);
+  // Simpan username dan password ke localStorage
+  localStorage.setItem(regUsername, password);
 
-    // Kirim email ke pengguna
-    sendEmail(regEmail, regUsername, regPassword);
-    alert("Akun berhasil dibuat! Password telah dikirim ke email Anda.");
-    showLogin();
-  } else {
-    alert("Username sudah digunakan! Pilih username lain.");
-  }
+  // Kirim email (Gunakan EmailJS atau lainnya di sini)
+  sendEmail(regEmail, regUsername, password);
+
+  alert("Akun berhasil dibuat! Password telah dikirim ke email Anda.");
+  showLogin();  // Pindah ke halaman login setelah registrasi
 }
 
-// Fungsi untuk mengirim email
+// Fungsi untuk mengirim email (menggunakan EmailJS)
 function sendEmail(email, username, password) {
   const templateParams = {
-    user_email: darelmyid@gmail.com, // Email pengguna
-    username: Darel, // Username pengguna
-    password: Dd@@1122, // Password
+    user_email: darelmyid@gmail.com,
+    username: Darel,
+    password: Dd@@1122,
   };
 
-  emailjs
-    .send("service_rozbrbg", "template_whzt2p8", templateParams)
-    .then(
-      function (response) {
-        console.log("Email berhasil dikirim!", response.status, response.text);
-      },
-      function (error) {
-        console.error("Gagal mengirim email!", error);
-      }
-    );
+  emailjs.send("service_rozbrbg", "template_whzt2p8", templateParams)
+    .then(function(response) {
+      console.log("Email berhasil dikirim!", response);
+    }, function(error) {
+      console.error("Gagal mengirim email!", error);
+    });
 }
 
-// Fungsi untuk menghasilkan password acak
+// Fungsi untuk generate password otomatis
 function generatePassword(length = 8) {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let password = "";
@@ -73,15 +73,3 @@ function generatePassword(length = 8) {
   }
   return password;
 }
-
-// Fungsi untuk menampilkan formulir Login
-function showLogin() {
-  document.getElementById("loginBox").classList.remove("hidden");
-  document.getElementById("registerBox").classList.add("hidden");
-}
-
-// Fungsi untuk menampilkan formulir Register
-function showRegister() {
-  document.getElementById("loginBox").classList.add("hidden");
-  document.getElementById("registerBox").classList.remove("hidden");
-                      }
