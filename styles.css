@@ -1,35 +1,45 @@
-body {
+/* Reset styles */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: Arial, sans-serif;
-  background: url('background.jpg') no-repeat center center fixed;
-  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: linear-gradient(to bottom, #4e54c8, #8f94fb);
+  background-size: cover;
+  color: #fff;
 }
 
 .login-container {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  width: 300px;
-}
-
-.login-form {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.login-box h1 {
   text-align: center;
-}
-
-.hidden {
-  display: none;
-}
-
-.login-form h1 {
-  color: white;
+  font-size: 2rem;
   margin-bottom: 20px;
+  color: #fff;
 }
 
 .input-group {
@@ -39,33 +49,65 @@ body {
 
 .input-group input {
   width: 100%;
-  padding: 10px;
+  padding: 12px 15px;
   border: none;
   border-radius: 5px;
-  outline: none;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 1rem;
 }
 
 .input-group .icon {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  top: 12px;
+  right: 15px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.options a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.options a:hover {
+  text-decoration: underline;
 }
 
 button {
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
   border: none;
   border-radius: 5px;
-  background: #6200ee;
-  color: white;
+  background: #6a82fb;
+  color: #fff;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button:hover {
-  background: #3700b3;
+  background: #4e54c8;
 }
 
 p {
-  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+p a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+p a:hover {
+  color: #f0f0f0;
 }
