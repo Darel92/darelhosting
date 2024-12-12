@@ -1,113 +1,60 @@
-/* Reset styles */
-* {
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to bottom, #4e54c8, #8f94fb);
-  background-size: cover;
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
+  font-family: Arial, sans-serif;
   color: #fff;
 }
 
 .login-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
   width: 100%;
+  max-width: 400px;
 }
 
 .login-box {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  padding: 20px;
   border-radius: 10px;
-  padding: 20px 40px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.login-box h1 {
+.hidden {
+  display: none;
+}
+
+h1 {
   text-align: center;
-  font-size: 2rem;
   margin-bottom: 20px;
-  color: #fff;
 }
 
 .input-group {
-  position: relative;
   margin-bottom: 15px;
+  position: relative;
 }
 
-.input-group input {
+input {
   width: 100%;
-  padding: 12px 15px;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
-  font-size: 1rem;
-}
-
-.input-group .icon {
-  position: absolute;
-  top: 12px;
-  right: 15px;
-  font-size: 1.2rem;
-  color: #fff;
-}
-
-.options {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-.options a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.options a:hover {
-  text-decoration: underline;
 }
 
 button {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
-  background: #6a82fb;
+  background: #6a75c9;
   color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
 button:hover {
   background: #4e54c8;
-}
-
-p {
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-p a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-p a:hover {
-  color: #f0f0f0;
 }
